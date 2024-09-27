@@ -1,5 +1,7 @@
 package be.vdab.util;
 
+import be.vdab.voertuigen.Maat;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -7,9 +9,9 @@ public class Volume implements Comparable<Volume>, Serializable {
     private final int breedte;
     private final int hoogte;
     private final int diepte;
-    private final be.vdab.util.Maat maat;
+    private final Maat maat;
 
-    public Volume(int breedte, int hoogte, int diepte, be.vdab.util.Maat maat) {
+    public Volume(int breedte, int hoogte, int diepte, Maat maat) {
         if (breedte <= 0 || hoogte <= 0 || diepte <= 0) {
             throw new VolumeException("Volume dimensions must be positive");
         }
@@ -46,7 +48,7 @@ public class Volume implements Comparable<Volume>, Serializable {
 
     @Override
     public String toString() {
-        return String.format("Volume: %d x %d x %d %s (%.2f m³)", breedte, hoogte, diepte, maat.name().toLowerCase(), getVolume());
+        return String.format(" %d x %d x %d %s (%.2f m³)", breedte, hoogte, diepte, maat.name().toLowerCase(), getVolume());
     }
 
 }

@@ -1,4 +1,4 @@
-package be.vdab.util;
+package be.vdab.voertuigen;
 
 public enum Maat {
     CENTIMETER(0.01), DECIMETER(0.1), METER(1.0);

@@ -1,6 +1,8 @@
 package be.vdab.main;
 
-import be.vdab.util.Maat;
+import be.vdab.schoolgerief.Boekentas;
+import be.vdab.util.Laadbaar;
+import be.vdab.voertuigen.Maat;
 import be.vdab.util.Volume;
 import be.vdab.voertuigen.*;
 import be.vdab.voertuigen.div.Div;
@@ -35,7 +37,7 @@ public class Main {
 
             out.writeObject(voertuigen);
             System.out.println("*********************************");
-            System.out.println("!!!!!   De voertuigen worden opgeslagen in het bestand wagenpark.dat  !!!!!");
+            System.out.println("!!!!!   De voertuigen worden opgeslagen in het bestand (wagenpark.dat)  !!!!!");
 
         } catch (IOException i) {
             i.printStackTrace();
@@ -46,7 +48,7 @@ public class Main {
              ObjectInputStream in = new ObjectInputStream(fileIn)) {
 
             SortedSet<Voertuig> opgeslagenVoertuigen = (SortedSet<Voertuig>) in.readObject();
-            System.out.println("\n Lijst met verbindingen gelezen uit bestand wagenpark.dat :");
+            System.out.println("\n Lijst met voertuigen gelezen uit bestand (wagenpark.dat) :");
             System.out.println("*********************************");
 
             for (Voertuig voertuig : opgeslagenVoertuigen) {
@@ -57,5 +59,19 @@ public class Main {
         } catch (IOException | ClassNotFoundException i) {
             i.printStackTrace();
         }
+
+        Boekentas boekentas1 = new Boekentas("Rood",new Volume(1,1,1,Maat.METER));
+        Boekentas boekentas2 = new Boekentas("Blauw",new Volume(1,2,1,Maat.METER));
+        String[] laadbaarsObjecten = new String[]{
+                String.valueOf(new Personenwagen(div.getNummerplaat(),"Toyota",2000 , 4)),
+                String.valueOf(new Pickup(div.getNummerplaat(),"Nissan",3000 , 4,new Volume(2,3,2,Maat.METER))),
+                String.valueOf(boekentas1),
+                String.valueOf(boekentas2)
+        };
+        for (String x : laadbaarsObjecten){
+            System.out.println(x);
+        }
+
     }
-}
+    }
+

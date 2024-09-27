@@ -19,10 +19,6 @@ public class Personenwagen extends Voertuig {
     }
     //setZitplaatsen
     public void setZitplaatsen(int zitplaatsen) {
-        if (zitplaatsen <= 0) {
-            throw new IllegalArgumentException("Zitplaatsen must be greater than 0");
-        }
-        this.zitplaatsen = zitplaatsen;
     }
 
     @Override
