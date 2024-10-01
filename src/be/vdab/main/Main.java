@@ -8,6 +8,7 @@ import be.vdab.voertuigen.*;
 import be.vdab.voertuigen.div.Div;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -62,15 +63,13 @@ public class Main {
 
         Boekentas boekentas1 = new Boekentas("Rood",new Volume(1,1,1,Maat.METER));
         Boekentas boekentas2 = new Boekentas("Blauw",new Volume(1,2,1,Maat.METER));
-        String[] laadbaarsObjecten = new String[]{
-                String.valueOf(new Personenwagen(div.getNummerplaat(),"Toyota",2000 , 4)),
-                String.valueOf(new Pickup(div.getNummerplaat(),"Nissan",3000 , 4,new Volume(2,3,2,Maat.METER))),
-                String.valueOf(boekentas1),
-                String.valueOf(boekentas2)
+        Laadbaar[] laadbaareObjecten ={boekentas1,boekentas2,
+                new Pickup(div.getNummerplaat(),"Nissan",3000,4,new Volume(2,3,2,Maat.METER)),
+                new Vrachtwagen(div.getNummerplaat(),"Toyota",2000,new Volume(1,2,3,Maat.METER),1000,3)
         };
-        for (String x : laadbaarsObjecten){
-            System.out.println(x);
-        }
+        double totaleVolume = Arrays.stream(laadbaareObjecten).mapToDouble
+                (Laadbaar -> Laadbaar.getLaadvolume().getVolume()).sum();
+                System.out.println("Totale volume = "+ totaleVolume);
 
     }
     }
